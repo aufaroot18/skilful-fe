@@ -11,7 +11,7 @@ import styles from "./AddTodo.module.css";
 
 const AddTodo = () => {
   const { addTodo } = useTodos();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [input, setInput] = useState("");
 
   const id = searchParams.get("id");
