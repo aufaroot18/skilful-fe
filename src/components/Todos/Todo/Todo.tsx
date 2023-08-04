@@ -10,7 +10,7 @@ const Todo = (props: TodoProps) => {
   const { completed, id, title } = props;
 
   const [, setSearchParams] = useSearchParams();
-  const { deleteTodo } = useTodos();
+  const { completeTodo, deleteTodo } = useTodos();
 
   const renderTitle = completed ? <s>{title}</s> : title;
 
@@ -19,16 +19,20 @@ const Todo = (props: TodoProps) => {
   };
 
   const handleEditTodo = () => {
-    setSearchParams({ id: `${id}` });
+    setSearchParams({ id: `${id}`, title: title });
   };
 
   const handleCompleteTodo = () => {
-    console.log("## [Debug Mode] compete todo");
+    completeTodo(id, completed);
   };
 
   return (
     <li className={styles.todo}>
-      <input type="checkbox" onClick={handleCompleteTodo} checked={completed} />
+      <input
+        type="checkbox"
+        onChange={handleCompleteTodo}
+        checked={completed}
+      />
       {renderTitle}
       <i className={styles.icon} onClick={handleEditTodo}>
         <FaPencilAlt />
