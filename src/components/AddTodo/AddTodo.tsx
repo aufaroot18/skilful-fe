@@ -10,11 +10,12 @@ import Button from "../../presentations/Button/Button";
 import styles from "./AddTodo.module.css";
 
 const AddTodo = () => {
-  const { addTodo } = useTodos();
+  const { addTodo, editTodo } = useTodos();
   const [searchParams] = useSearchParams();
   const [input, setInput] = useState("");
 
   const id = searchParams.get("id");
+  const editTitle = searchParams.get("title");
 
   const handleInput = (event: FormEvent<HTMLInputElement>) => {
     setInput(event.currentTarget.value);
@@ -23,12 +24,15 @@ const AddTodo = () => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    addTodo(input);
+    id ? editTodo(id, input) : addTodo(input);
+    setInput("");
   };
 
   useEffect(() => {
-    console.log(searchParams.get("id"));
-  }, [searchParams]);
+    if (editTitle) {
+      setInput(editTitle);
+    }
+  }, [editTitle, searchParams]);
 
   return (
     <form className={styles.container} onSubmit={handleSubmit}>
