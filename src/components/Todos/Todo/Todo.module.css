@@ -1,0 +1,13 @@
+.todo {
+  display: flex;
+  gap: 1rem;
+  padding: 15px;
+  border: 1px solid #bdc3c7;
+  list-style: none;
+  border-radius: 5px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
