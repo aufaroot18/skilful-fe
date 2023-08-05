@@ -1,5 +1,10 @@
 # Frontend
 
+## Run Project
+
+- Install: `yarn`
+- Run Local: `yarn dev`
+
 ## Features
 
 - See all todos.
