@@ -1,31 +1,11 @@
-import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
-import { TodoType } from "../../models/todos";
+import { TodoType, TodoContextType } from "../../models/todos";
 
-interface ContextValue {
-  todos: TodoType[];
-  loading: boolean;
-  error: string;
-  addTodo: (newTodo: string) => void;
-  editTodo: (id: string, title: string) => void;
-  deleteTodo: (id: string) => void;
-  completeTodo: (id: string, completed: boolean) => void;
-}
-
-const defaultValue = {
-  todos: [],
-  loading: true,
-  error: "",
-  addTodo: () => null,
-  editTodo: () => null,
-  deleteTodo: () => null,
-  completeTodo: () => null,
-};
-
-export const TodoContext = createContext<ContextValue>(defaultValue);
+export const TodoContext = createContext<TodoContextType | null>(null);
 
 interface TodoProviderProps {
   children: ReactNode;
