@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <Layout>
       <TodoProvider>
-        <Title customClassName={styles.title}>What's the plan for today</Title>
+        <Title customClassName={styles.title}>Daftar Todos</Title>
         <AddTodo />
         <Todos />
       </TodoProvider>
